@@ -9,6 +9,12 @@ header{
 .bg-img {
     background: linear-gradient(90deg, rgba(3, 87, 3, 0.678), rgba(0, 128, 0, 0.671));
 }
+.bg-img1 {
+    background: linear-gradient(120deg, rgb(97, 154, 12), rgba(163, 190, 9, 0.962));
+}
+.bg-img3 {
+    background: linear-gradient(310deg, rgb(255, 0, 0) , rgba(72, 51, 206, 0.563));
+}
 
 .bg-main {
     background-color: #EDE9FE;
@@ -205,4 +211,10 @@ header .shadow{
 }
 header .shadow:hover{
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.137) !important;
+}
+
+header #favorite,
+header #emarj{
+    max-height: 280px;
+    overflow-y: auto;
 }

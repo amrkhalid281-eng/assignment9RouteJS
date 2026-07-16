@@ -123,7 +123,7 @@
 
                                     <div class="pt-4 d-flex gap-4">
                                         <div class="d-flex align-items-center gap-1">
-                                            <input onclick="favorites()" type="checkbox" class="me-2 checkbox-big" id="fav">
+                                            <input type="checkbox" class="me-2 checkbox-big" id="fav">
                                             <i class="fas fa-star text-warning small"></i>
                                             <label for="fav">Favorite</label>
                                         </div>
@@ -167,7 +167,7 @@
                 <div class="row">
                     <div class="col-6 col-md-4 p-2">
                         <div
-                            class="shadow bg-white border border-1 border-secondary border-opacity-10 rounded-4 p-3 d-flex gap-3 align-items-center">
+                            class="shadow bg-white border border-1 border-secondary border-opacity-25 rounded-4 p-3 d-flex gap-3 align-items-center">
                             <div
                                 class="p-3 bg-primary rounded-4 bg-icon d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-users text-white"></i>
@@ -180,27 +180,27 @@
                     </div>
                     <div class="col-6 col-md-4 p-2">
                         <div
-                            class="shadow bg-white border border-1 border-secondary border-opacity-10 rounded-4 p-3 d-flex gap-3 align-items-center">
+                            class="shadow bg-white border border-1 border-secondary border-opacity-25 rounded-4 p-3 d-flex gap-3 align-items-center">
                             <div
                                 class="p-3 bg-warning rounded-4 bg-icon d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-star text-white"></i>
                             </div>
                             <div class="d-flex flex-column">
                                 <span class="fw-medium text-secondary small">FAVORITE</span>
-                                <span id="favorite-count" class="fw-bolder fs-4">0</span>
+                                <span id="favorite-count" class="fw-bolder fs-4"></span>
                             </div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4 p-2">
                         <div
-                            class="shadow bg-white border border-1 border-secondary border-opacity-10 rounded-4 p-3 d-flex gap-3 align-items-center">
+                            class="shadow bg-white border border-1 border-secondary border-opacity-25 rounded-4 p-3 d-flex gap-3 align-items-center">
                             <div
                                 class="p-3 bg-danger rounded-4 bg-icon d-flex align-items-center justify-content-center">
                                 <i class="fa-solid fa-heart-pulse text-white"></i>
                             </div>
                             <div class="d-flex flex-column">
                                 <span class="fw-medium text-secondary small">EMERGENCY</span>
-                                <span id="Emar-count" class="fw-bolder fs-4">0</span>
+                                <span id="Emar-count" class="fw-bolder fs-4"></span>
                             </div>
                         </div>
                     </div>
@@ -286,10 +286,10 @@
                 <div class="col-12 col-xl-3 pt-4 contact-lists">
                     <div class="pt-3 sticky-top">
                         <div
-                            class="favorite-list bg-white rounded-4 overflow-hidden border border-1 border-secondary border-opacity-10 shadow mb-3">
+                            class="favorite-list bg-white rounded-4 overflow-hidden border border-1 border-secondary border-opacity-25 shadow mb-3">
                             <div>
                                 <div
-                                    class="bg-warning bg-opacity-10 d-flex align-items-center gap-2 p-3 border-bottom border-1 border-secondary border-opacity-10">
+                                    class="bg-warning bg-opacity-10 d-flex align-items-center gap-2 p-3 border-bottom border-1 border-secondary border-opacity-25">
                                     <div
                                         class="contact-bg bg-warning rounded-2 d-flex align-items-center justify-content-center">
                                         <i class="fa-solid fa-star text-white small"></i>
@@ -299,10 +299,10 @@
                                         <p class="text-secondary m-0">Quick access to starred contacts</p>
                                     </div>
                                 </div>
-                                <div class="px-2 pb-4 row" id="favorite">
-                                    <div class="d-flex justify-content-center align-items-center" style="height: 60px;">
-                                        <p class="m-0 text-black text-opacity-25 fw-semibold fs-6">No favorites yet</p>
-                                    </div>
+                                <div id="p-fav" class="d-flex justify-content-center align-items-center" style="height: 60px;">
+                                    <p class="m-0 text-black text-opacity-25 fw-semibold fs-6">No favorites yet</p>
+                                </div>
+                                <div class="px-2 pb-1 row" id="favorite">
                                     <!-- <div class="p-2 col-6 col-xl-12 bg-danger">
                                         <div
                                             class="contact p-2 d-flex align-items-center justify-content-between gap-2 rounded-3">
@@ -321,10 +321,10 @@
                             </div>
                         </div>
                         <div
-                            class="Emergency-list bg-white rounded-4 overflow-hidden border border-1 border-secondary border-opacity-10 shadow mb-3">
+                            class="Emergency-list bg-white rounded-4 overflow-hidden border border-1 border-secondary border-opacity-25 shadow mb-3">
                             <div>
                                 <div
-                                    class="bg-danger bg-opacity-10 d-flex align-items-center gap-2 p-3 border-bottom border-1 border-secondary border-opacity-10">
+                                    class="bg-danger bg-opacity-10 d-flex align-items-center gap-2 p-3 border-bottom border-1 border-secondary border-opacity-25">
                                     <div
                                         class="contact-bg bg-danger rounded-2 d-flex align-items-center justify-content-center">
                                         <i class="fa-solid fa-heart-pulse text-white small"></i>
@@ -334,7 +334,10 @@
                                         <p class="text-secondary m-0">Important contacts for urgent calls</p>
                                     </div>
                                 </div>
-                                <div class="p-3 pb-4 row" id="emarj">
+                                <div id="p-emarg" class="d-flex justify-content-center align-items-center" style="height: 60px;">
+                                    <p class="m-0 text-black text-opacity-25 fw-semibold fs-6">No emergency yet</p>
+                                </div>
+                                <div class="px-2 pb-1 row" id="emarj">
 
                                 </div>
                             </div>
