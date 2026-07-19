@@ -129,8 +129,30 @@ function disblay() {
                         ${
                             allProduct[i].img !== ""
                             ? `
-                                <div class="rounded-4 bg-img d-flex justify-content-center align-items-center" style="width: 60px;height: 60px;">
-                                    <p class="m-0 text-white h5 fw-bolder">${allProduct[i].fullname.split(' ').map(word => word[0]).join('')}</p>
+                                <div class="rounded-4 bg-img d-flex justify-content-center align-items-center position-relative" style="width: 60px;height: 60px;">
+                                    ${
+                                        allProduct[i].fav == true
+                                        ?`
+                                            <div class="d-flex justify-content-center align-items-center position-absolute translate-middle rounded-circle bg-warning
+                                                border border-2"
+                                                style="left: 88%; top: 10%;width: 25px;height: 25px;">
+                                                <i class="fas fa-star text-white" style="font-size: .55rem;"></i>
+                                            </div>
+                                        `
+                                        :``
+                                    }
+                                    <p class="m-0 text-white h5 fw-bolder">${allProduct[i].fullname.split(' ').splice(0,2).map(word => word[0]).join('')}</p>
+                                    ${
+                                        allProduct[i].emarg == true
+                                        ?`
+                                            <div class="d-flex justify-content-center align-items-center position-absolute translate-middle rounded-circle bg-danger
+                                                border border-2"
+                                                style="left: 88%; top: 85%;width: 25px;height: 25px;">
+                                                <i class="fas fa-heart-pulse text-white" style="font-size: .60rem;"></i>
+                                            </div>
+                                        `
+                                        :``
+                                    }
                                 </div>
                             `
                             : `
@@ -175,9 +197,20 @@ function disblay() {
                         ${
                             allProduct[i].selectGroup !== "select-group"
                             ? `
-                            <div class="py-2">
+                            <div class="py-1">
                                 <div class="bg-main p-1 px-2 rounded-2 fit-content">
                                     <span class="small text-purple fw-semibold">${allProduct[i].selectGroup}</span>
+                                </div>
+                            </div>
+                            `
+                            : ``
+                        }
+                        ${
+                            allProduct[i].emarg == true
+                            ? `
+                            <div class="py-1">
+                                <div class="bg-danger bg-opacity-10  px-2 rounded-2 fit-content">
+                                    <span class="small text-danger fw-semibold">Emergency</span>
                                 </div>
                             </div>
                             `
@@ -205,7 +238,7 @@ function disblay() {
                                 <button onclick="disblayEmerg(${i})" class="heart-icon border-0 py-1 rounded-2 bg-transparent">
                                     ${
                                         allProduct[i].emarg
-                                        ? `<i class="fa-solid fa-heart text-danger"></i>`
+                                        ? `<i class="fa-solid fa-heart-pulse text-danger"></i>`
                                         : `<i class="fa-regular fa-heart text-secondary"></i>`
                                     }
                                     
@@ -224,7 +257,6 @@ function disblay() {
         `;
         if(allProduct[i].fav == true) {
             favCount++;
-            document.getElementById("p-fav").classList.replace("d-flex","d-none")
             cartoonaFav += `
                 <div class="p-2 col-6 col-xl-12">
                     <div
@@ -233,7 +265,7 @@ function disblay() {
                             allProduct[i].img !== ""
                             ? `
                                 <div class="rounded-3 bg-img1 d-flex justify-content-center align-items-center" style="width: 40px;height: 40px;">
-                                    <p class="m-0 text-white fs-6 fw-bolder">${allProduct[i].fullname.split(' ').map(word => word[0]).join('')}</p>
+                                    <p class="m-0 text-white fs-6 fw-bolder">${allProduct[i].fullname.split(' ').splice(0,2).map(word => word[0]).join('')}</p>
                                 </div>
                             `
                             : `
@@ -257,7 +289,6 @@ function disblay() {
         }
         if(allProduct[i].emarg == true) {
             emarCount++;
-            document.getElementById("p-emarg").classList.replace("d-flex","d-none")
             cartoonaemarg += `
                 <div class="p-2 col-6 col-xl-12">
                     <div
@@ -266,7 +297,7 @@ function disblay() {
                             allProduct[i].img !== ""
                             ? `
                                 <div class="rounded-3 bg-img3 d-flex justify-content-center align-items-center" style="width: 40px;height: 40px;">
-                                    <p class="m-0 text-white fs-6 fw-bolder">${allProduct[i].fullname.split(' ').map(word => word[0]).join('')}</p>
+                                    <p class="m-0 text-white fs-6 fw-bolder">${allProduct[i].fullname.split(' ').splice(0,2).map(word => word[0]).join('')}</p>
                                 </div>
                             `
                             : `
@@ -288,6 +319,21 @@ function disblay() {
         }else {
             document.getElementById("p-emarg").classList.replace("d-none","d-flex")
         }
+    }
+
+    if (favCount > 0) {
+        document.getElementById("p-fav").classList.remove("d-flex");
+        document.getElementById("p-fav").classList.add("d-none");
+    } else {
+        document.getElementById("p-fav").classList.remove("d-none");
+        document.getElementById("p-fav").classList.add("d-flex");
+    }
+    if (emarCount > 0) {
+        document.getElementById("p-emarg").classList.remove("d-flex");
+        document.getElementById("p-emarg").classList.add("d-none");
+    } else {
+        document.getElementById("p-emarg").classList.remove("d-none");
+        document.getElementById("p-emarg").classList.add("d-flex");
     }
 
     document.getElementById("favorite").innerHTML = cartoonaFav;
