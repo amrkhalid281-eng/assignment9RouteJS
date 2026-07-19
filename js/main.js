@@ -220,12 +220,22 @@ function disblay() {
                     <div class="border-top mt-3 p-3 border-1 border-secondary border-opacity-10 pt-2 bg-body-tertiary bg-opacity-25">
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="d-flex gap-3">
-                                <div class="bg-success bg-opacity-10 py-1 px-2 rounded-2 fit-content">
+                                <a href="tel:${allProduct[i].phoneNumber}" class="d-inline-block bg-success bg-opacity-10 py-1 px-2 rounded-2 fit-content">
                                     <i class="fa-solid fa-phone text-success small"></i>
-                                </div>
-                                <div class="bg-main bg-opacity-10 py-1 px-2 rounded-2 fit-content">
-                                    <i class="fa-solid fa-envelope text-purple small"></i>
-                                </div>
+                                </a>
+                                ${
+                                    allProduct[i].email !== ""
+                                    ? `
+                                        <a href="mailto:${allProduct[i].email}" class="bg-main bg-opacity-10 py-1 px-2 rounded-2 fit-content d-inline-block">
+                                            <i class="fa-solid fa-envelope text-purple small"></i>
+                                        </a>
+                                    `
+                                    : `
+                                        <div class="bg-main bg-opacity-10 py-1 px-2 rounded-2 fit-content opacity-50">
+                                            <i class="fa-solid fa-envelope text-purple small"></i>
+                                        </div>
+                                    `
+                                }
                             </div>
                             <div class="d-flex gap-3 align-items-center">
                                 <button onclick="disblayfav(${i})" class="star-icon border-0 py-1 rounded-2 bg-transparent">
