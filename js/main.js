@@ -287,10 +287,10 @@ function disblay() {
                             <h6 class="small fw-medium m-0">${allProduct[i].fullname}</h6>
                             <p class="text-secondary m-0">${allProduct[i].phoneNumber}</p>
                         </div>
-                        <div
-                            class="call-bg bg-success bg-opacity-25 rounded-2 d-flex align-items-center justify-content-center">
+                        <a  href="tel:${allProduct[i].phoneNumber}"
+                            class="call-bg bg-success bg-opacity-25 rounded-2 d-flex align-items-center justify-content-center d-inline-block text-decoration-none">
                             <i class="fa-solid fa-phone text-success"></i>
-                        </div>
+                        </a>
                     </div>
                 </div>
             `
@@ -319,10 +319,10 @@ function disblay() {
                             <h6 class="small fw-medium m-0">${allProduct[i].fullname}</h6>
                             <p class="text-secondary m-0">${allProduct[i].phoneNumber}</p>
                         </div>
-                        <div
-                            class="call-bg bg-success bg-opacity-25 rounded-2 d-flex align-items-center justify-content-center">
+                        <a  href="tel:${allProduct[i].phoneNumber}"
+                            class="call-bg bg-success bg-opacity-25 rounded-2 d-flex align-items-center justify-content-center text-decoration-none">
                             <i class="fa-solid fa-phone text-success"></i>
-                        </div>
+                        </a>
                     </div>
                 </div>
             `
@@ -409,26 +409,54 @@ function perupdate(index) {
 
 function updateContact() {
 
-    var product = {
-        fullname : contactNameInput.value ,
-        phoneNumber : contactNumberInput.value ,
-        email : contactEmailInput.value ,
-        address : contactAddressInput.value ,
-        selectGroup : contactGroupInput.value ,
-        notes : contactNotesInput.value ,
-        img : contactImageInput.files[0]?.name ,
-        fav : contactFavInput.checked ,
-        emarg : contactEmargInput.checked ,
+        if(validName() == true && validPhone() == true && isPhoneDuplicate() == false) {
+            var product = {
+            fullname : contactNameInput.value ,
+            phoneNumber : contactNumberInput.value ,
+            email : contactEmailInput.value ,
+            address : contactAddressInput.value ,
+            selectGroup : contactGroupInput.value ,
+            notes : contactNotesInput.value ,
+            img : contactImageInput.files[0]?.name ,
+            fav : contactFavInput.checked ,
+            emarg : contactEmargInput.checked ,
+        }
+        allProduct.splice(curentIndex , 1 , product);
+        localStorage.setItem("all",JSON.stringify(allProduct))
+        disblay()
+        clearInput()
+        updateBtn.classList.replace("d-block","d-none")
+        addBtn.classList.replace("d-none","d-block")
+        var modalElement = document.getElementById("staticBackdrop");
+        var modalInstance = bootstrap.Modal.getInstance(modalElement);
+        modalInstance.hide();
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Ubdated!",
+            text: "contact has been added sucssefule",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }else if(validName() == false) {
+        Swal.fire({
+            icon: "error",
+            title: "Missing Name",
+            text: "plase enter a name for the contact!",
+        });
+    }else if(validPhone() == false) {
+        Swal.fire({
+            icon: "error",
+            title: "Missing Phone",
+            text: "plase enter a phone number!",
+        });
+    }else if(isPhoneDuplicate() == true) {
+        Swal.fire({
+            icon: "error",
+            title: "Duplicate Phone",
+            text: "this phone number is already registered!",
+        });
     }
-    allProduct.splice(curentIndex , 1 , product);
-    localStorage.setItem("all",JSON.stringify(allProduct))
-    disblay()
-    clearInput()
-    updateBtn.classList.replace("d-block","d-none")
-    addBtn.classList.replace("d-none","d-block")
-    var modalElement = document.getElementById("staticBackdrop");
-    var modalInstance = bootstrap.Modal.getInstance(modalElement);
-    modalInstance.hide();
 }
 
 function searchByName(term) {
